@@ -25,7 +25,6 @@ const reducer = (state, action) => {
             if (action.user) {
                 updatedState = {
                     ...state,
-                    loggedIn: action.user ? true : false,
                     user: action.user,
                     waitForLogin:false
                 }
@@ -37,7 +36,6 @@ const reducer = (state, action) => {
             localStorage.removeItem("expectSignedIn");
             return {
                 ...state,
-                loggedIn: false,
                 user: null,
                 waitForLogin:false
             }            
@@ -47,8 +45,9 @@ const reducer = (state, action) => {
 
 }
 export const AppContextProvider = (props) => {
-    const theme = localStorage.getItem('theme');
-    const initialState = { theme: theme || "light", waitForLogin:localStorage.getItem("expectSignedIn") };
+    const theme = localStorage.getItem('theme') || "light";
+    console.log(theme);
+    const initialState = { theme: theme, waitForLogin:localStorage.getItem("expectSignedIn") };
     const [appState, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {

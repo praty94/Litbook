@@ -9,7 +9,8 @@ const LoginStyles = makeStyles((theme) => ({
         background:themeColors[theme.palette.type].sectionColor
     },
     button:{
-        minWidth:250
+        minWidth:250,
+        padding:8
     },
     paperContainer:{
         padding:16

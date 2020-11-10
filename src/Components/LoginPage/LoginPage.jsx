@@ -27,7 +27,6 @@ const LoginPage = () => {
                 console.error(error);
             });
 
-
     }
 
     const handleKeepSignedInChange = (e) => {
