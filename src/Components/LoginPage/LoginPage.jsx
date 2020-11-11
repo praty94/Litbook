@@ -52,7 +52,6 @@ const LoginPage = () => {
                         <Checkbox
                             onChange={handleKeepSignedInChange}
                             name="keepSignedinCB"
-                            color="primary"
                         />
                     }
                     style={{marginTop:5}}

@@ -16,7 +16,9 @@ import clsx from 'clsx';
 import { appLogo } from '../../Assets/';
 import { Flag, Storefront } from '@material-ui/icons';
 import MoreActionsMenu from './MoreActionsMenu';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -150,10 +152,12 @@ export default function PrimarySearchAppBar() {
   const [isSearchFocused, setSearchFocused] = useState(false);
   const [pageSelected, setPageSelected] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
-  const handleMenuOpen = (event) => {
-    setMenuOpen(!menuOpen);
+  const handleOpen = (event) => {
+    setMenuOpen(true);
   };
-
+  const handleClose = () => {
+    setMenuOpen(false);
+  }
   return (
     <div className={classes.grow}>
       <AppBar position="fixed" style={{ boxShadow: '0 5px 8px -9px rgba(0,0,0,.75)' }}>
@@ -243,7 +247,7 @@ export default function PrimarySearchAppBar() {
               edge="end"
               aria-label="account of current user"
               aria-haspopup="true"
-              onClick={handleMenuOpen}
+              onClick={handleOpen}
               color="inherit"
               className={classes.iconButton}
             >
@@ -252,12 +256,24 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      {menuOpen ?
-        <ClickAwayListener onClickAway={()=>setMenuOpen(false)}>
-          <Paper className={classes.headerMenu} elevation={2}>
+      <Modal
+        aria-labelledby="transition-modal-header-menu"
+        aria-describedby="header-menu-description"
+        className={classes.modal}
+        open={menuOpen}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={menuOpen}>
+        <Paper className={classes.headerMenu} elevation={2}>
             <MoreActionsMenu></MoreActionsMenu>
           </Paper>
-        </ClickAwayListener> : null}
+        </Fade>
+      </Modal>      
     </div>
   );
 }

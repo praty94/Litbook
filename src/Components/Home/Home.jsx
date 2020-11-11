@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import homeStyles from './HomeStyles';
 import LeftSideBar from './LeftSideBar';
 import Stories from '../Stories/Stories';
@@ -10,7 +10,7 @@ function Home() {
     const classes = homeStyles();
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        db.collection('posts').onSnapshot(snapshot => {          
+        db.collection('posts').orderBy("timeStamp","desc").onSnapshot(snapshot => {
             setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })))
         });
     }, []);
@@ -25,7 +25,7 @@ function Home() {
                 {posts.map(post => (
                     <FeedCard key={post.id} {...post.data}></FeedCard>
                 ))}
-                
+
             </div>
             <div className={classes.rightSection}></div>
         </div>

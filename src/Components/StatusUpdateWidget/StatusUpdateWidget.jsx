@@ -1,11 +1,13 @@
-import React from 'react'
-import { Paper, InputBase, Divider, Typography } from '@material-ui/core';
+import React, { useState } from 'react'
+import { Paper, Divider, Typography } from '@material-ui/core';
 import Avatar from '../Avatar/Avatar';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import { themeColors } from '../../Theme/ThemeHelper';
 import VideoIcon from '@material-ui/icons/VideoCall';
 import PhotoIcon from '@material-ui/icons/PhotoLibrary';
 import MoodIcon from '@material-ui/icons/Mood';
+import CreatePostModal from '../CreatePostModal/CreatePostModal';
+
 const useStyles = makeStyles((theme) => ({
     inputRoot: {
         color: 'inherit',
@@ -19,11 +21,16 @@ const useStyles = makeStyles((theme) => ({
     search: {
         position: 'relative',
         borderRadius: 30,
-        backgroundColor: themeColors[theme.palette.type].background,
         margin: theme.spacing(0, 2),
         height: 44,
         display: 'flex',
-        flex: 10
+        alignItems: 'center',
+        flex: 10,
+        cursor: 'pointer',
+        backgroundColor: fade(themeColors[theme.palette.type].background, 0.6),
+        '&:hover': {
+            backgroundColor: fade(themeColors[theme.palette.type].background, 1),
+        }
     },
     avatarContainer: {
         flex: 1
@@ -45,11 +52,20 @@ const useStyles = makeStyles((theme) => ({
     paperContainer: {
         minWidth: 620,
         background: theme.palette.primary.main
+    },
+    statusUpdateText: {
+        marginLeft: 20,
+        fontSize: '1.2rem',
+        color: themeColors[theme.palette.type].subTitleText
     }
 
 }));
 function StatusUpdateWidget() {
     const classes = useStyles();
+    const [createPostModalOpen, setCreatePostModalOpen] = useState(false);
+    const handleClose = () => {
+        setCreatePostModalOpen(false);
+    };
     return (
         <div style={{ display: 'flex', justifyContent: "center" }}>
             <Paper className={classes.paperContainer}>
@@ -57,14 +73,8 @@ function StatusUpdateWidget() {
                     <div className={classes.avatarContainer}>
                         <Avatar size="medium"></Avatar>
                     </div>
-                    <div className={classes.search}>
-                        <InputBase
-                            placeholder="What's on your mind?"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                        />
+                    <div className={classes.search} onClick={() => setCreatePostModalOpen(true)}>
+                        <Typography className={classes.statusUpdateText}>What's on your mind?</Typography>
                     </div>
                 </div>
                 <Divider />
@@ -78,10 +88,11 @@ function StatusUpdateWidget() {
                         <Typography style={{ marginLeft: 5 }}><b>Photo/Video</b></Typography>
                     </div>
                     <div className={classes.buttonContainer}>
-                        <MoodIcon fontSize="large" style={{ fontSize: '1.85rem', color: '#f5b727' }}></MoodIcon>
+                        <MoodIcon style={{ fontSize: '1.85rem', color: '#f5b727' }}></MoodIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Feeling/Activity</b></Typography>
                     </div>
                 </div>
+                <CreatePostModal open={createPostModalOpen} handleClose={handleClose}></CreatePostModal>
             </Paper>
         </div>
     )

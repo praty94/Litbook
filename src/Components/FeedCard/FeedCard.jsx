@@ -5,16 +5,29 @@ import LikeIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import ShareIcon from '@material-ui/icons/NearMeOutlined';
 const toDateTime = (timeStamp) => {
-    let t = new Date(Date.UTC(1970, 0, 1)); // Epoch
-    t.setUTCSeconds(timeStamp.seconds);
-    var d = new Date();
-    var diff = (d.getTime() - t.getTime())/1000;
-    diff /= 60;
-    return diff;
+    if (timeStamp) {
+        let t = new Date(Date.UTC(1970, 0, 1)); // Epoch
+        t.setUTCSeconds(timeStamp.seconds);
+        let d = new Date();
+        let diff = (d.getTime() - t.getTime()) / 1000;//seconds
+        diff /= 60;//minutes  
+        if (diff > 59) {
+            diff = Math.floor(diff / 60);//hours
+            if (diff > 23) {
+                diff = Math.floor(diff / 24) + " d";
+            } else {
+                diff = diff + " h";
+            }
+        } else {
+            diff = Math.floor(diff) + " m";
+        }
+        return diff;
+    }else{
+        return "0 m";
+    }
 }
 function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, likes }) {
     const classes = FeedCardStyles();
-    //timeStamp = new Date(timeStamp?.toDate()).toString();
     return (
         <div className={classes.parentContainer}>
             <Paper className={classes.container}>

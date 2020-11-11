@@ -3,7 +3,7 @@ import {themeColors} from '../../Theme/ThemeHelper';
 const FeedCardStyles = makeStyles((theme) => ({
     container:{
         display:'flex',
-        minWidth: 620,
+        width: 620,
         background:theme.palette.primary.main,
         flexDirection:'column',
         textAlign:'left'
