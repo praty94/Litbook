@@ -70,24 +70,25 @@ export default function TransitionsModal(props) {
   const [contentImg, setContentImg] = useState(null);
   const onTextChanged = (e) => {
     const str = e.target.value;
-    if (str && str.trim().length > 0) {
+    if (str && str.trim().length > 0) {  
+      const str = e.target.value;  
+      setContentText(str);   
+
       // eslint-disable-next-line  
-      const regex = /([\w+]+\:\/\/)?([\w\d-]+\.)*[\w-]+[\.\:]\w+([\/\?\=\&\#]?[\w-]+)*\/?.[\S]*/
-      const str = e.target.value;
-      setContentText(str);
+      const regex = /([\w+]+\:\/\/)?([\w\d-]+\.)*[\w-]+[\.\:]\w+([\/\?\=\&\#]?[\w-]+)*\/?.[\S]*/         
       let myArray = str.match(regex);
       if (myArray && myArray.length) {
-        validateAndLoadImg(myArray[0]);
+        if(myArray[0] !== contentImg)
+          validateAndLoadImg(myArray[0]);
       } 
     } else {
-      setContentImg(null);
       setContentText(null);
     }
   }
   const validateAndLoadImg = (url) => {
     let img = new Image();
     img.onload = function () { setContentImg(url) };
-    img.onerror = function () { setContentImg(null); }
+    //img.onerror = function () { setContentImg(null); }
     img.src = url;
   }
 
@@ -157,7 +158,7 @@ export default function TransitionsModal(props) {
                   <MoodIcon style={{ fontSize: '1.7rem', marginLeft: 10, color: '#f5b727' }}></MoodIcon>
                 </div>
               </div>
-              <Button variant="contained" color="secondary" disabled={contentText ? false : true} onClick={(e) => handleSubmit(e)}>Post</Button>
+              <Button variant="contained" color="secondary" disabled={contentText || contentImg ? false : true} onClick={(e) => handleSubmit(e)}>Post</Button>
             </div>
           </Paper>
         </Fade>

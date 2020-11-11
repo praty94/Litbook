@@ -10,14 +10,14 @@ function Home() {
     const classes = homeStyles();
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        db.collection('posts').orderBy("timeStamp","desc").onSnapshot(snapshot => {
+        db.collection('posts').orderBy("timeStamp", "desc").onSnapshot(snapshot => {
             setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })))
         });
     }, []);
     return (
         <div className={classes.container}>
             <div className={classes.leftSection}>
-                <LeftSideBar></LeftSideBar>
+                <LeftSideBar></LeftSideBar>                
             </div>
             <div className={classes.midSection}>
                 <Stories></Stories>
