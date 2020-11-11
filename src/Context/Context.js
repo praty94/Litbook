@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import { ActionTypes } from './ActionTypes';
 import { auth } from '../Firebase/Firebase';
+import {themeColors} from '../Theme/ThemeHelper';
 export const AppContext = createContext();
 
 const reducer = (state, action) => {

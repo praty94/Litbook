@@ -53,6 +53,9 @@ const FeedCardStyles = makeStyles((theme) => ({
     subtitleText:{
         color:themeColors[theme.palette.type].subTitleText,
         fontSize:'0.85rem'
+    },
+    liked:{
+        color:theme.palette.secondary.main
     }    
 }));
 
