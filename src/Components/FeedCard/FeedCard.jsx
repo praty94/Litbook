@@ -38,7 +38,7 @@ function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, likes
                         <Typography variant="subtitle1" className={classes.subtitleText}>{toDateTime(timeStamp)}</Typography>
                     </div>
                 </div>
-                <Typography style={{ margin: 8 }}>{contentTitle}</Typography>
+                <Typography style={{ margin: 8,wordWrap:'break-word'}}>{contentTitle}</Typography>
                 {contentImg ?
                     <img src={contentImg} alt="post-img" className={classes.contentImg}></img> : null}
                 <div className={classes.reactionContainer}>

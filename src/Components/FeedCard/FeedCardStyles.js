@@ -8,7 +8,12 @@ const FeedCardStyles = makeStyles((theme) => ({
         flexDirection:'column',
         textAlign:'left'
     },
-    parentContainer:{ display: 'flex', justifyContent: "center",marginTop:15 },
+    parentContainer:{
+        display: 'flex',
+        justifyContent: "center",
+        marginTop:15,
+        width:'inherit' 
+    },
     userContainer:{
         display:'flex',
         alignItems:'center',
