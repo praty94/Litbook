@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/litbook/static/css/main.cbc80022.chunk.css",
-    "main.js": "/litbook/static/js/main.16c7a94b.chunk.js",
-    "main.js.map": "/litbook/static/js/main.16c7a94b.chunk.js.map",
-    "runtime-main.js": "/litbook/static/js/runtime-main.26b23850.js",
-    "runtime-main.js.map": "/litbook/static/js/runtime-main.26b23850.js.map",
-    "static/js/2.d860f96c.chunk.js": "/litbook/static/js/2.d860f96c.chunk.js",
-    "static/js/2.d860f96c.chunk.js.map": "/litbook/static/js/2.d860f96c.chunk.js.map",
-    "static/js/3.d574177b.chunk.js": "/litbook/static/js/3.d574177b.chunk.js",
-    "static/js/3.d574177b.chunk.js.map": "/litbook/static/js/3.d574177b.chunk.js.map",
-    "index.html": "/litbook/index.html",
-    "static/css/main.cbc80022.chunk.css.map": "/litbook/static/css/main.cbc80022.chunk.css.map",
-    "static/js/2.d860f96c.chunk.js.LICENSE.txt": "/litbook/static/js/2.d860f96c.chunk.js.LICENSE.txt",
-    "static/media/fire.cea46eb2.svg": "/litbook/static/media/fire.cea46eb2.svg",
-    "static/media/google.bbce75f8.svg": "/litbook/static/media/google.bbce75f8.svg"
+    "main.css": "/Litbook/static/css/main.cbc80022.chunk.css",
+    "main.js": "/Litbook/static/js/main.16c7a94b.chunk.js",
+    "main.js.map": "/Litbook/static/js/main.16c7a94b.chunk.js.map",
+    "runtime-main.js": "/Litbook/static/js/runtime-main.2aff2ae8.js",
+    "runtime-main.js.map": "/Litbook/static/js/runtime-main.2aff2ae8.js.map",
+    "static/js/2.e5c19c02.chunk.js": "/Litbook/static/js/2.e5c19c02.chunk.js",
+    "static/js/2.e5c19c02.chunk.js.map": "/Litbook/static/js/2.e5c19c02.chunk.js.map",
+    "static/js/3.d574177b.chunk.js": "/Litbook/static/js/3.d574177b.chunk.js",
+    "static/js/3.d574177b.chunk.js.map": "/Litbook/static/js/3.d574177b.chunk.js.map",
+    "index.html": "/Litbook/index.html",
+    "static/css/main.cbc80022.chunk.css.map": "/Litbook/static/css/main.cbc80022.chunk.css.map",
+    "static/js/2.e5c19c02.chunk.js.LICENSE.txt": "/Litbook/static/js/2.e5c19c02.chunk.js.LICENSE.txt",
+    "static/media/fire.cea46eb2.svg": "/Litbook/static/media/fire.cea46eb2.svg",
+    "static/media/google.bbce75f8.svg": "/Litbook/static/media/google.bbce75f8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.26b23850.js",
-    "static/js/2.d860f96c.chunk.js",
+    "static/js/runtime-main.2aff2ae8.js",
+    "static/js/2.e5c19c02.chunk.js",
     "static/css/main.cbc80022.chunk.css",
     "static/js/main.16c7a94b.chunk.js"
   ]
