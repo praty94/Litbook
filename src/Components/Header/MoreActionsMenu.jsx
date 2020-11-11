@@ -35,19 +35,12 @@ export default function MoreActionsMenu() {
   }
   return (
     <List className={classes.root}>
-      <ListItem>
+      <ListItem button onClick={() => handleToggle('theme')}>
         <ListItemIcon>
           {appState.theme === "light" ? <LightIcon /> :
             <DarkIcon />}
         </ListItemIcon>
-        <ListItemText id="switch-theme" primary="Theme" />
-        <ListItemSecondaryAction>
-          <Switch
-            edge="end"
-            onChange={() => handleToggle('theme')}
-            inputProps={{ 'aria-labelledby': 'switch-theme' }}
-          />
-        </ListItemSecondaryAction>
+        <ListItemText id="switch-theme" primary="Switch Theme" />       
       </ListItem>
       <ListItem button onClick={() => handleLogout()}>
         <ListItemIcon>
