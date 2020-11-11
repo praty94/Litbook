@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/covid-app-isi/static/css/main.cbc80022.chunk.css",
-    "main.js": "/covid-app-isi/static/js/main.16c7a94b.chunk.js",
-    "main.js.map": "/covid-app-isi/static/js/main.16c7a94b.chunk.js.map",
-    "runtime-main.js": "/covid-app-isi/static/js/runtime-main.27c28fbf.js",
-    "runtime-main.js.map": "/covid-app-isi/static/js/runtime-main.27c28fbf.js.map",
-    "static/js/2.e7a05e88.chunk.js": "/covid-app-isi/static/js/2.e7a05e88.chunk.js",
-    "static/js/2.e7a05e88.chunk.js.map": "/covid-app-isi/static/js/2.e7a05e88.chunk.js.map",
-    "static/js/3.d574177b.chunk.js": "/covid-app-isi/static/js/3.d574177b.chunk.js",
-    "static/js/3.d574177b.chunk.js.map": "/covid-app-isi/static/js/3.d574177b.chunk.js.map",
-    "index.html": "/covid-app-isi/index.html",
-    "static/css/main.cbc80022.chunk.css.map": "/covid-app-isi/static/css/main.cbc80022.chunk.css.map",
-    "static/js/2.e7a05e88.chunk.js.LICENSE.txt": "/covid-app-isi/static/js/2.e7a05e88.chunk.js.LICENSE.txt",
-    "static/media/fire.cea46eb2.svg": "/covid-app-isi/static/media/fire.cea46eb2.svg",
-    "static/media/google.bbce75f8.svg": "/covid-app-isi/static/media/google.bbce75f8.svg"
+    "main.css": "/litbook/static/css/main.cbc80022.chunk.css",
+    "main.js": "/litbook/static/js/main.16c7a94b.chunk.js",
+    "main.js.map": "/litbook/static/js/main.16c7a94b.chunk.js.map",
+    "runtime-main.js": "/litbook/static/js/runtime-main.26b23850.js",
+    "runtime-main.js.map": "/litbook/static/js/runtime-main.26b23850.js.map",
+    "static/js/2.d860f96c.chunk.js": "/litbook/static/js/2.d860f96c.chunk.js",
+    "static/js/2.d860f96c.chunk.js.map": "/litbook/static/js/2.d860f96c.chunk.js.map",
+    "static/js/3.d574177b.chunk.js": "/litbook/static/js/3.d574177b.chunk.js",
+    "static/js/3.d574177b.chunk.js.map": "/litbook/static/js/3.d574177b.chunk.js.map",
+    "index.html": "/litbook/index.html",
+    "static/css/main.cbc80022.chunk.css.map": "/litbook/static/css/main.cbc80022.chunk.css.map",
+    "static/js/2.d860f96c.chunk.js.LICENSE.txt": "/litbook/static/js/2.d860f96c.chunk.js.LICENSE.txt",
+    "static/media/fire.cea46eb2.svg": "/litbook/static/media/fire.cea46eb2.svg",
+    "static/media/google.bbce75f8.svg": "/litbook/static/media/google.bbce75f8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.27c28fbf.js",
-    "static/js/2.e7a05e88.chunk.js",
+    "static/js/runtime-main.26b23850.js",
+    "static/js/2.d860f96c.chunk.js",
     "static/css/main.cbc80022.chunk.css",
     "static/js/main.16c7a94b.chunk.js"
   ]
