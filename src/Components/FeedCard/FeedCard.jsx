@@ -1,37 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import FeedCardStyles from './FeedCardStyles';
 import { Paper, Avatar, Typography, Divider } from '@material-ui/core';
 import LikeIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import ShareIcon from '@material-ui/icons/NearMeOutlined';
 import db from '../../Firebase/Firebase';
-const toDateTime = (timeStamp) => {
-    if (timeStamp) {
-        let t = new Date(Date.UTC(1970, 0, 1)); // Epoch
-        t.setUTCSeconds(timeStamp.seconds);
-        let d = new Date();
-        let diff = (d.getTime() - t.getTime()) / 1000;//seconds
-        diff /= 60;//minutes  
-        if (diff > 59) {
-            diff = Math.floor(diff / 60);//hours
-            if (diff > 23) {
-                diff = Math.floor(diff / 24) + " d";
-            } else {
-                diff = diff + " h";
-            }
-        } else {
-            diff = Math.floor(diff) + " m";
-        }
-        return diff;
-    } else {
-        return "0 m";
-    }
-}
+import {AppContext} from '../../Context/Context';
+import {ActionTypes} from '../../Context/ActionTypes';
+import {toDateTime} from '../../Utils/DateUtil';
+
 function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, postId, userId }) {
     const classes = FeedCardStyles();
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
     const [isReady, setIsReady] = useState(false);
+    
+    // eslint-disable-next-line
+    const [appState,dispatch] = useContext(AppContext);
+
     const handleLike = (val) => {
         if (isReady) {
             if (val) {
@@ -47,18 +33,21 @@ function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, postI
             }
         }
     }
+    const showToast = () => {
+        dispatch({type:ActionTypes.TOGGLE_TOAST,toggle:true})
+    }
     useEffect(() => {
-        db.collection('posts').doc(postId).collection("likes").onSnapshot(snapshot => {
-            let count = 0;
-            console.log(snapshot.docs);
-            snapshot.docs.forEach((doc) => {
-                count++;                
-                if (doc.id === userId)
+        db.collection('posts').doc(postId).collection("likes").get().then(snapshot => {
+            const count = snapshot.docs.length;                       
+            snapshot.docs.forEach((doc) => {                                
+                if (doc.id === userId){
                     setLiked(true);
+                    return;
+                }
             });
             setLikesCount(count);
             setIsReady(true);
-        })
+        });
     }, [postId,userId]);
     return (
         <div className={classes.parentContainer}>
@@ -82,11 +71,11 @@ function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, postI
                         <LikeIcon fontSize="small" className={liked ? classes.liked: null}></LikeIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Like</b></Typography>
                     </div>
-                    <div className={classes.buttonContainer}>
+                    <div className={classes.buttonContainer} onClick={()=>showToast()}>
                         <CommentIcon fontSize="small"></CommentIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Comment</b></Typography>
                     </div>
-                    <div className={classes.buttonContainer}>
+                    <div className={classes.buttonContainer} onClick={()=>showToast()}>
                         <ShareIcon fontSize="small"></ShareIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Share</b></Typography>
                     </div>
