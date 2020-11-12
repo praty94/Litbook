@@ -7,6 +7,11 @@ export const AppContext = createContext();
 const reducer = (state, action) => {
     let updatedState = state;
     switch (action.type) {
+        case ActionTypes.TOGGLE_TOAST:
+            return {
+                ...state,
+                showToast:action.toggle
+            }            
         case ActionTypes.TOGGLE_THEME:
             if (state.theme === 'dark') {
                 updatedState = {

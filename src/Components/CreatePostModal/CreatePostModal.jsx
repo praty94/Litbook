@@ -103,8 +103,7 @@ export default function TransitionsModal(props) {
       profilePic: user.photoURL,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
       contentTitle: contentText,
-      contentImg: contentImg,
-      likes: 0
+      contentImg: contentImg
     };
     db.collection('posts').add(payload);
     setContentImg(null);

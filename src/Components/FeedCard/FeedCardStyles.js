@@ -1,12 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 import {themeColors} from '../../Theme/ThemeHelper';
 const FeedCardStyles = makeStyles((theme) => ({
+    
     container:{
         display:'flex',
         width: 620,
         background:theme.palette.primary.main,
         flexDirection:'column',
         textAlign:'left'
+    },
+    media:{
+        height:190
     },
     parentContainer:{
         display: 'flex',

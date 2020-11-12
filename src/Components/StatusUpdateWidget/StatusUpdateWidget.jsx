@@ -63,11 +63,15 @@ const useStyles = makeStyles((theme) => ({
 function StatusUpdateWidget() {
     const classes = useStyles();
     const [createPostModalOpen, setCreatePostModalOpen] = useState(false);
+    
     const handleClose = () => {
         setCreatePostModalOpen(false);
     };
+    const showNotification = () => {
+        
+    }
     return (
-        <div style={{ display: 'flex', justifyContent: "center" }}>
+        <div style={{ display: 'flex', justifyContent: "center" }}>           
             <Paper className={classes.paperContainer}>
                 <div className={classes.rowContainer}>
                     <div className={classes.avatarContainer}>
@@ -79,20 +83,21 @@ function StatusUpdateWidget() {
                 </div>
                 <Divider />
                 <div className={classes.rowContainer}>
-                    <div className={classes.buttonContainer}>
+                    <div className={classes.buttonContainer} onClick={() => showNotification()}>
                         <VideoIcon style={{ fontSize: '1.85rem', color: '#ef2748' }}></VideoIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Live Video</b></Typography>
                     </div>
-                    <div className={classes.buttonContainer}>
+                    <div className={classes.buttonContainer} onClick={() => showNotification()}>
                         <PhotoIcon style={{ fontSize: '1.85rem', color: '#45bd62' }}></PhotoIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Photo/Video</b></Typography>
                     </div>
-                    <div className={classes.buttonContainer}>
+                    <div className={classes.buttonContainer} onClick={() => showNotification()}>
                         <MoodIcon style={{ fontSize: '1.85rem', color: '#f5b727' }}></MoodIcon>
                         <Typography style={{ marginLeft: 5 }}><b>Feeling/Activity</b></Typography>
                     </div>
                 </div>
                 <CreatePostModal open={createPostModalOpen} handleClose={handleClose}></CreatePostModal>
+                
             </Paper>
         </div>
     )
