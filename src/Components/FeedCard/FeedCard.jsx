@@ -37,7 +37,7 @@ function FeedCard({ name, profilePic, timeStamp, contentTitle, contentImg, postI
         dispatch({type:ActionTypes.TOGGLE_TOAST,toggle:true})
     }
     useEffect(() => {
-        db.collection('posts').doc(postId).collection("likes").get().then(snapshot => {
+        db.collection('posts').doc(postId).collection("likes").onSnapshot(snapshot => {
             const count = snapshot.docs.length;                       
             snapshot.docs.forEach((doc) => {                                
                 if (doc.id === userId){
