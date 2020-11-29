@@ -22,8 +22,7 @@ const stories_data = [
         userImg:"https://i.pinimg.com/236x/0a/8a/84/0a8a84a639106a8c450a24ebdbb4eebb.jpg",
         title:"John"
     },
-    {
-        //contentImg:"https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60",
+    {       
         contentImg:"https://d2skuhm0vrry40.cloudfront.net/2020/articles/2020-07-31-10-28/halo-infinite-multiplayer-is-free-to-play-report-1596187669355.jpg/EG11/thumbnail/750x422/format/jpg/quality/60",
         userImg:"https://www.extremetech.com/wp-content/uploads/2016/07/Cortana-Feature-640x354.jpg",
         title:"Cortana"

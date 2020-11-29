@@ -16,7 +16,7 @@ function ToastNotification(props) {
     };
     return (
         <div>
-            <Snackbar open={appState.showToast} autoHideDuration={33000} onClose={handleClose} anchorOrigin={{vertical:'bottom', horizontal:'left' }}>
+            <Snackbar open={appState.showToast} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{vertical:'bottom', horizontal:'left' }}>
                 <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="info" style={{backgroundColor:themeColors[appState.theme].secondary}}>
                     {props.message}
                 </MuiAlert>

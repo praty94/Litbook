@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { Paper, Divider, Typography } from '@material-ui/core';
 import Avatar from '../Avatar/Avatar';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -7,6 +7,8 @@ import VideoIcon from '@material-ui/icons/VideoCall';
 import PhotoIcon from '@material-ui/icons/PhotoLibrary';
 import MoodIcon from '@material-ui/icons/Mood';
 import CreatePostModal from '../CreatePostModal/CreatePostModal';
+import {AppContext} from '../../Context/Context';
+import {ActionTypes} from '../../Context/ActionTypes';
 
 const useStyles = makeStyles((theme) => ({
     inputRoot: {
@@ -63,12 +65,13 @@ const useStyles = makeStyles((theme) => ({
 function StatusUpdateWidget() {
     const classes = useStyles();
     const [createPostModalOpen, setCreatePostModalOpen] = useState(false);
-    
+    // eslint-disable-next-line
+    const [appState,dispatch] = useContext(AppContext);
     const handleClose = () => {
         setCreatePostModalOpen(false);
     };
     const showNotification = () => {
-        
+        dispatch({type:ActionTypes.TOGGLE_TOAST,toggle:true})
     }
     return (
         <div style={{ display: 'flex', justifyContent: "center" }}>           
