@@ -52,7 +52,7 @@ export default function LeftSideBar() {
                 <Button color="secondary" style={{ textTransform: 'none' }}>See all</Button>
             </div>
             <div className={clsx(classes.standardContainer,classes.standardPadding)}>
-                <Avatar alt="friendName" src="https://img.redbull.com/images/c_crop,x_431,y_0,h_933,w_746/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2020/3/31/xc6e14jeolutgs3mlajn/ori-and-the-will-of-the-wisps-screenshot"
+                <Avatar alt="friendName" src="https://imgur.com/tKk3itc.jpg"
                     className={classes.largeAvatar} />
                     <div className={classes.subcontainer}>
                         <Typography color="textPrimary">Yara Jenkins</Typography>
