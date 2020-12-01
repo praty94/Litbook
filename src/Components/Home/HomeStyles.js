@@ -11,13 +11,19 @@ const HomeStyles = makeStyles((theme) => ({
     leftSection:{
         flex:'1 1',
         display:'flex',
-        justifyContent:'center'
+        justifyContent:'center',
+        [theme.breakpoints.down(1200)]: {
+            display:'none'
+        }
     },
     midSection:{
         flex:'2 2'
     },
     rightSection:{
-        flex:'1 1'
+        flex:'1 1',
+        [theme.breakpoints.down(900)]: {
+            display:'none'
+        }
     }
 }));
 

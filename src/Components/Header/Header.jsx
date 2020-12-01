@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: themeColors[theme.palette.type].secondary
     },
-    [theme.breakpoints.down(1020)]: {
+    [theme.breakpoints.down(1022)]: {
       width: 75
     },
     [theme.breakpoints.down(900)]: {
