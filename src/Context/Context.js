@@ -51,12 +51,8 @@ const reducer = (state, action) => {
 
 }
 export const AppContextProvider = (props) => {
-    const theme = localStorage.getItem('theme') || "light";   
-    if(theme === "light"){
-        document.body.style.backgroundColor = themeColors.dark.sectionColor;
-      }else{
-        document.body.style.backgroundColor = themeColors.light.sectionColor;
-      }
+    const theme = localStorage.getItem('theme') || "light"; 
+    document.body.style.backgroundColor = themeColors[theme].sectionColor;
     const initialState = { theme: theme, waitForLogin:localStorage.getItem("expectSignedIn") };
     const [appState, dispatch] = useReducer(reducer, initialState);
 

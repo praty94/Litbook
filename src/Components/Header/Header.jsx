@@ -19,6 +19,7 @@ import MoreActionsMenu from './MoreActionsMenu';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import GenericMenu from './GenericMenu';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -148,15 +149,60 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const classes = useStyles();
+  const classes = useStyles();  
   const [isSearchFocused, setSearchFocused] = useState(false);
   const [pageSelected, setPageSelected] = useState('home');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const handleOpen = (event) => {
-    setMenuOpen(true);
+  const [menuOpen, setMenuOpen] = useState({isOpen:false,menu:null});
+  const headerMenuButtons = [{ label: "create post", badgeContent: 3, icon: <AddIcon /> },
+  { label: 'show messages', badgeContent: 3, icon: <MessageIcon />,event:{onClick:()=>handleOpen("messages")} },
+  { label: 'show notifications', badgeContent: 5, icon: <NotificationsIcon />,event:{onClick:()=>handleOpen("notifications")}}];
+  const headerMidButtons = [{
+    name: 'home',
+    badgeContent: 0,
+    icon: <HomeIcon className={classes.midIcon} />,
+    customClass: "midHomeButton"
+  },
+  {
+    name: 'pages',
+    badgeContent: 0,
+    icon: <Flag className={classes.midIcon} />,
+    customClass: "midPagesButton"
+  },
+  {
+    name: 'video',
+    badgeContent: 5,
+    icon: <VideoLibraryIcon className={classes.midIcon} />,
+    customClass: "midVideoButton"
+  },
+  {
+    name: 'market',
+    badgeContent: 0,
+    icon: <Storefront className={classes.midIcon} />,
+    customClass: "midMarketButton"
+  },
+  {
+    name: 'group',
+    badgeContent: "9+",
+    icon: <GroupIcon className={classes.midIcon} />,
+    customClass: "midGroupButton"
+  }]
+  const handleOpen = (val) => {
+    setMenuOpen({isOpen:true,menu:val});
   };
   const handleClose = () => {
-    setMenuOpen(false);
+    setMenuOpen({isOpen:false,menu:null});
+  }
+  const getMenuToDisplay = (val) =>{
+    switch(val){
+      case "moreActions" :
+      return <MoreActionsMenu></MoreActionsMenu>;
+      case "notifications" :
+      return <GenericMenu icon={<NotificationsIcon/>} title="No Notifications"></GenericMenu>;
+      case "messages" :         
+      return <GenericMenu icon={<MessageIcon/>} title="No Messages"></GenericMenu>;
+      default:
+        return null;
+    }
   }
   return (
     <div className={classes.grow}>
@@ -193,33 +239,19 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <div className={classes.grow}>
-            <IconButton color="inherit" onClick={() => setPageSelected('home')} disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, [classes.midHomeButton]: true, [classes.selected]: pageSelected === 'home' })}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <HomeIcon className={classes.midIcon} />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" onClick={() => setPageSelected('pages')} disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, [classes.midPagesButton]: true, [classes.selected]: pageSelected === 'pages' })}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <Flag className={classes.midIcon} />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" onClick={() => setPageSelected('video')} disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, [classes.midVideoButton]: true, [classes.selected]: pageSelected === 'video' })}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <VideoLibraryIcon className={classes.midIcon} />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" onClick={() => setPageSelected('market')} disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, [classes.midMarketButton]: true, [classes.selected]: pageSelected === 'market' })}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <Storefront className={classes.midIcon} />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" onClick={() => setPageSelected('group')} disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, [classes.midGroupButton]: true, [classes.selected]: pageSelected === 'group' })}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <GroupIcon className={classes.midIcon} />
-              </Badge>
-            </IconButton>
+            {headerMidButtons.map((item, index) => {
+              return (
+              <IconButton color="inherit" onClick={() => setPageSelected(item.name)} key={index} 
+                disableRipple className={clsx({ [classes.midIconButton]: true, [classes.margin_r_8]: true, 
+                [classes[item.customClass]]: true, [classes.selected]: pageSelected === item.name})}>
+                <Badge badgeContent={item.badgeContent} color="secondary">
+                  {item.icon}
+                </Badge>
+              </IconButton>              
+            )})}
+
             <IconButton color="inherit" disableRipple className={clsx(classes.midIconButton, classes.margin_r_8, classes.midMoreButton)}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
+              <Badge badgeContent={4} color="secondary" >
                 <MenuIcon className={classes.midIcon} />
               </Badge>
             </IconButton>
@@ -228,26 +260,20 @@ export default function PrimarySearchAppBar() {
             <AvatarWithBadge></AvatarWithBadge>
           </div>
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="create post" color="inherit" className={clsx(classes.iconButton, classes.margin_r_8)}>
-              <Badge badgeContent={4} color="secondary" invisible={true}>
-                <AddIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show messages" color="inherit" className={clsx(classes.iconButton, classes.margin_r_8)}>
-              <Badge badgeContent={4} color="secondary" invisible={true} >
-                <MessageIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show notifications" color="inherit" className={clsx(classes.iconButton, classes.margin_r_8)}>
-              <Badge badgeContent={17} color="secondary" invisible={true}>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            {headerMenuButtons.map((item, index) => {
+              return (
+                <IconButton aria-label={item.title} {...item.event} color="inherit" key={index} className={clsx(classes.iconButton, classes.margin_r_8)}>
+                  <Badge badgeContent={item.badgeContent} color="secondary" invisible={true}>
+                    {item.icon}
+                  </Badge>
+                </IconButton>
+              )
+            })}
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-haspopup="true"
-              onClick={handleOpen}
+              onClick={()=>handleOpen("moreActions")}
               color="inherit"
               className={classes.iconButton}
             >
@@ -260,7 +286,7 @@ export default function PrimarySearchAppBar() {
         aria-labelledby="transition-modal-header-menu"
         aria-describedby="header-menu-description"
         className={classes.modal}
-        open={menuOpen}
+        open={menuOpen.isOpen}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -268,12 +294,13 @@ export default function PrimarySearchAppBar() {
           timeout: 500,
         }}
       >
-        <Fade in={menuOpen}>
-        <Paper className={classes.headerMenu} elevation={2}>
-            <MoreActionsMenu></MoreActionsMenu>
+        <Fade in={menuOpen.isOpen}>
+          <Paper className={classes.headerMenu} elevation={2}>
+            {getMenuToDisplay(menuOpen.menu)}
           </Paper>
         </Fade>
-      </Modal>      
+      </Modal>
+      
     </div>
   );
 }

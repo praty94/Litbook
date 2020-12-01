@@ -10,7 +10,6 @@ import { AppContext } from '../../Context/Context';
 import { ActionTypes } from '../../Context/ActionTypes';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import { auth } from '../../Firebase/Firebase';
-import { themeColors } from '../../Theme/ThemeHelper';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 250
@@ -20,15 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export default function MoreActionsMenu() {
   const classes = useStyles();
   const [appState, dispatch] = useContext(AppContext);
-  const handleToggle = () => {
-    if(appState.theme === "light"){
-      document.body.style.backgroundColor = themeColors.dark.sectionColor;
-    }else{
-      document.body.style.backgroundColor = themeColors.light.sectionColor;
-    }
-
+  const handleToggle = () => {    
     dispatch({ type: ActionTypes.TOGGLE_THEME });
-    
   }
   const handleLogout = () => {
     if (auth) {
@@ -46,7 +38,7 @@ export default function MoreActionsMenu() {
           {appState.theme === "light" ? <LightIcon /> :
             <DarkIcon />}
         </ListItemIcon>
-        <ListItemText id="switch-theme" primary="Switch Theme" />       
+        <ListItemText id="switch-theme" primary="Switch Theme" />
       </ListItem>
       <ListItem button onClick={() => handleLogout()}>
         <ListItemIcon>
