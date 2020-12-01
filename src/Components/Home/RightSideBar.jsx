@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Divider, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import CakeIcon from '@material-ui/icons/Cake';
+
 const useStyles = makeStyles((theme) => ({
     standardPadding:{
         paddingBottom: theme.spacing(1),
@@ -38,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'none',
         marginRight:5,
         width:125 
+    },
+    cakeIcon:{
+        color:theme.palette.secondary.main
     }
 }));
 
@@ -68,7 +72,7 @@ export default function LeftSideBar() {
                 <Button color="secondary" style={{ textTransform: 'none' }}>See all</Button>
             </div>
             <div className={clsx(classes.standardContainer,classes.standardPadding)}>
-                <CakeIcon fontSize="large"></CakeIcon>
+                <CakeIcon fontSize="large" className={classes.cakeIcon}></CakeIcon>
                 <Typography color="textPrimary" style={{marginLeft:15}}>Alexa and 5 others have their birthdays today.</Typography>
             </div>
         </React.Fragment>
