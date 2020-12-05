@@ -135,7 +135,7 @@ export default function TransitionsModal(props) {
               <TextField
                 autoFocus
                 id="post-content"
-                placeholder="What's on your mind?"
+                placeholder="What's on your mind? (You can also post an image by pasting the url)"
                 multiline
                 rowsMax={8}
                 rows={4}
